@@ -17,7 +17,7 @@ public class AuthorController {
     @GetMapping
     public ResponseEntity GetAuthorByID(@RequestParam Integer ID){
         System.out.println("got in");
-        var authors=authorRepository.getAuthorByID(ID);
+        var authors=authorRepository.get(ID);
         return ResponseEntity.ok(authors);
     }
 
