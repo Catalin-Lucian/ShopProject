@@ -10,7 +10,7 @@ public class Book {
 
 
     public Book() {
-        //test pt cezar 
+        //test pt andreea
     }
 
     public Book(String ISBN, String titlu, String editura, Integer anPublicare, String genLiteral) {
