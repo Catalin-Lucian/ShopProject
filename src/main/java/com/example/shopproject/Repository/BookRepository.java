@@ -36,13 +36,14 @@ public class BookRepository implements Repository<Book,String> {
 
     @Override
     public List<Book> list() {
-        String sql="SELECT * FROM book";
+        String sql="SELECT * FROM carte";
         return jdbcTemplate.query(sql,BeanPropertyRowMapper.newInstance(Book.class));
     }
 
     @Override
     public void create(Book book) {
-        String sql="INSERT INTO book (ISBN, titulu, editura, an_publicare, gen_literal) VALUES(?,?,?,?,?)";
+        String sql="INSERT INTO carte (ISBN, titlu, editura, an_publicare, gen_literal) VALUES(?,?,?,?,?)";
+        System.out.println(book.toString());
         int insert = jdbcTemplate.update(sql,book.getISBN(),book.getTitlu(),book.getEditura(),book.getAnPublicare(),book.getGenLiteral());
         if (insert == 1){
             log.info("new Author created:"+ book.toString());
@@ -51,7 +52,7 @@ public class BookRepository implements Repository<Book,String> {
 
     @Override
     public Optional<Book> get(String id) {
-        String sql= "SELECT * FROM book WHERE ISBN = ?";
+        String sql= "SELECT * FROM carte WHERE ISBN = ?";
         Book book = null;
         try{
             book = jdbcTemplate.queryForObject(sql, new Object[]{id},BeanPropertyRowMapper.newInstance(Book.class));
@@ -63,7 +64,7 @@ public class BookRepository implements Repository<Book,String> {
 
     @Override
     public void update(Book book, String id) {
-        String sql="UPDATE book SET titlu=?, editura=?, an_publicare=?,gen_literal=? where ID = ?";
+        String sql="UPDATE carte SET titlu=?, editura=?, an_publicare=?,gen_literal=? where ID = ?";
         int update = jdbcTemplate.update(sql,book.getTitlu(),book.getEditura(),book.getAnPublicare(),book.getGenLiteral(),book.getISBN());
         if (update == 1){
             log.info("Book updated:"+book.getISBN());
@@ -72,6 +73,6 @@ public class BookRepository implements Repository<Book,String> {
 
     @Override
     public void delete(String id) {
-        jdbcTemplate.update("delete from book where ISBN = ?",id);
+        jdbcTemplate.update("delete from carte where ISBN = ?",id);
     }
 }

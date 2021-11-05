@@ -5,18 +5,19 @@ public class Book {
     private String ISBN;
     private String titlu;
     private String editura;
-    private String anPublicare;
+    private Integer anPublicare;
     private String genLiteral;
 
 
     public Book() {
     }
 
-    public Book(String titlu, String editura, String anPublicare, String genLiteral){
-        this.titlu =titlu;
-        this.editura =editura;
-        this.anPublicare =anPublicare;
-        this.genLiteral =genLiteral;
+    public Book(String ISBN, String titlu, String editura, Integer anPublicare, String genLiteral) {
+        this.ISBN = ISBN;
+        this.titlu = titlu;
+        this.editura = editura;
+        this.anPublicare = anPublicare;
+        this.genLiteral = genLiteral;
     }
 
     public String getISBN() {
@@ -43,11 +44,11 @@ public class Book {
         this.editura = editura;
     }
 
-    public String getAnPublicare() {
+    public Integer getAnPublicare() {
         return anPublicare;
     }
 
-    public void setAnPublicare(String anPublicare) {
+    public void setAnPublicare(Integer anPublicare) {
         this.anPublicare = anPublicare;
     }
 

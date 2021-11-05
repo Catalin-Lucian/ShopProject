@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/api/bookcollection/books")
+@RequestMapping(value = "/api/bookcollection/authors")
 public class AuthorController {
 
     @Autowired
@@ -16,7 +16,6 @@ public class AuthorController {
 
     @GetMapping
     public ResponseEntity GetAuthorByID(@RequestParam Integer ID){
-        System.out.println("got in");
         var authors=authorRepository.get(ID);
         return ResponseEntity.ok(authors);
     }
