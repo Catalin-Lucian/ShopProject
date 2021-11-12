@@ -1,23 +1,32 @@
 package com.example.shopproject.Controller;
 
-
+import com.example.shopproject.Model.Entity.Author;
 import com.example.shopproject.Repository.AuthorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import com.example.shopproject.Service.AuthorService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api/bookcollection/authors")
 public class AuthorController {
 
-    @Autowired
-    AuthorRepository authorRepository;
+    private final AuthorService authorService;
+
+    public AuthorController(AuthorService authorService) {
+        this.authorService = authorService;
+    }
 
     @GetMapping
-    public ResponseEntity GetAuthorByID(@RequestParam Integer ID){
-        var authors=authorRepository.get(ID);
-        return ResponseEntity.ok(authors);
+    public @ResponseBody
+    Optional<Author> GetAuthorByID(@RequestParam Integer ID){
+        return authorService.GetAuthorByID(ID);
+    }
+
+    @PostMapping
+    public void PostAuthor(@RequestBody Author author){
+        System.out.println(author.toString());
+        authorService.PostAuthor(author);
     }
 
 }

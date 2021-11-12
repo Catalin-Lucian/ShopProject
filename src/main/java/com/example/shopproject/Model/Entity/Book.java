@@ -1,25 +1,18 @@
 package com.example.shopproject.Model.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
 
+    @Id
     private String ISBN;
-    private String titlu;
-    private String editura;
-    private Integer anPublicare;
-    private String genLiteral;
+    private String TITLU;
+    private String EDITURA;
+    private Integer AN;
+    private String GEN;
 
-
-    public Book() {
-        //test pt andreea
-    }
-
-    public Book(String ISBN, String titlu, String editura, Integer anPublicare, String genLiteral) {
-        this.ISBN = ISBN;
-        this.titlu = titlu;
-        this.editura = editura;
-        this.anPublicare = anPublicare;
-        this.genLiteral = genLiteral;
-    }
 
     public String getISBN() {
         return ISBN;
@@ -29,46 +22,46 @@ public class Book {
         this.ISBN = ISBN;
     }
 
-    public String getTitlu() {
-        return titlu;
+    public String getTITLU() {
+        return TITLU;
     }
 
-    public void setTitlu(String titlu) {
-        this.titlu = titlu;
+    public void setTITLU(String TITLU) {
+        this.TITLU = TITLU;
     }
 
-    public String getEditura() {
-        return editura;
+    public String getEDITURA() {
+        return EDITURA;
     }
 
-    public void setEditura(String editura) {
-        this.editura = editura;
+    public void setEDITURA(String EDITURA) {
+        this.EDITURA = EDITURA;
     }
 
-    public Integer getAnPublicare() {
-        return anPublicare;
+    public Integer getAN() {
+        return AN;
     }
 
-    public void setAnPublicare(Integer anPublicare) {
-        this.anPublicare = anPublicare;
+    public void setAN(Integer AN_PUBLICARE) {
+        this.AN = AN_PUBLICARE;
     }
 
-    public String getGenLiteral() {
-        return genLiteral;
+    public String getGEN() {
+        return GEN;
     }
 
-    public void setGenLiteral(String genLiteral) {
-        this.genLiteral = genLiteral;
+    public void setGEN(String GEN_LITERAR) {
+        this.GEN = GEN_LITERAR;
     }
 
     @Override
     public String toString() {
         return "Book{" +
                 "ISBN='" + ISBN + '\'' +
-                ", titlu='" + titlu + '\'' +
-                ", editura='" + editura + '\'' +
-                ", anPublicare='" + anPublicare + '\'' +
-                ", genLiteral='" + genLiteral + '\'' +
+                ", TITLU='" + TITLU + '\'' +
+                ", EDITURA='" + EDITURA + '\'' +
+                ", AN=" + AN +
+                ", GEN='" + GEN + '\'' +
                 '}';
     }
 }

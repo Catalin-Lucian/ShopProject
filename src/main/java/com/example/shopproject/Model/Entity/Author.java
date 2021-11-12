@@ -1,48 +1,54 @@
 package com.example.shopproject.Model.Entity;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Author {
 
+    @Id
     private Integer ID;
-    private String prenume;
-    private String nume;
+    private String PRENUME;
+    private String NUME;
 
-    public Author(){}
 
-    public Author(String prenume, String nume) {
-        this.prenume = prenume;
-        this.nume = nume;
+    public Author(String PRENUME, String NUME) {
+        this.PRENUME = PRENUME;
+        this.NUME = NUME;
+    }
+
+    protected Author() {
     }
 
     public Integer getID() {
         return ID;
     }
 
-    public void setID(Integer ID) {
-        this.ID = ID;
+    public String getPRENUME() {
+        return PRENUME;
     }
 
-    public String getPrenume() {
-        return prenume;
+    public void setPRENUME(String prenume) {
+        this.PRENUME = prenume;
     }
 
-    public void setPrenume(String prenume) {
-        this.prenume = prenume;
+    public String getNUME() {
+        return NUME;
     }
 
-    public String getNume() {
-        return nume;
-    }
-
-    public void setNume(String nume) {
-        this.nume = nume;
+    public void setNUME(String nume) {
+        this.NUME = nume;
     }
 
     @Override
     public String toString() {
         return "Author{" +
                 "ID=" + ID +
-                ", prenume='" + prenume + '\'' +
-                ", nume='" + nume + '\'' +
+                ", prenume='" + PRENUME + '\'' +
+                ", nume='" + NUME + '\'' +
                 '}';
     }
 }
