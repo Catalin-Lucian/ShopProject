@@ -2,27 +2,42 @@ package com.example.shopproject.Controller;
 
 
 import com.example.shopproject.Model.Entity.Book;
-import com.example.shopproject.Repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import com.example.shopproject.Service.BookService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api/bookcollection/books")
 public class BookController {
-    @Autowired
-    private BookRepository bookRepository;
+
+
+    private final BookService bookService;
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
 
     @GetMapping
-    public ResponseEntity GetBookByISBN(@RequestParam String ISBN){
-        var book=bookRepository.get(ISBN);
-        return ResponseEntity.ok(book);
+    public @ResponseBody
+    Optional<Book> GetBookByISBN(@RequestParam String ISBN){
+        return bookService.GetBookByISBN(ISBN);
     }
+    @GetMapping("/all")
+    public Iterable<Book> GetAllBooks(){
+        return bookService.GetAllBooks();
+    }
+
 
     @PostMapping
     public void PostBook(@RequestBody Book book){
         System.out.println(book.toString());
-        bookRepository.create(book);
+        bookService.PostBook(book);
     }
+
+    @DeleteMapping
+    public void DeleteBook(@RequestParam String ISBN){
+        bookService.DeleteBook(ISBN);
+    }
+
 }
