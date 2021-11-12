@@ -3,6 +3,7 @@ package com.example.shopproject.Model.Entity;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -13,7 +14,7 @@ public class BookAuthor {
     @GeneratedValue
     private Integer ID;
 
-    private String ISBN;
+    protected String ISBN;
     private Integer IDAUTHOR;
 
 }

@@ -2,16 +2,16 @@ package com.example.shopproject.Model.Entity;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
 @Entity
 public class Author implements Serializable {
+
 
     @Id
     @GeneratedValue

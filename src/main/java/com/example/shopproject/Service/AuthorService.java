@@ -4,8 +4,6 @@ package com.example.shopproject.Service;
 import com.example.shopproject.Model.Entity.Author;
 import com.example.shopproject.Repository.AuthorRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.Optional;
 
 @Service
@@ -21,8 +19,17 @@ public class AuthorService {
         return authorRepository.findById(ID);
     }
 
-    public void PostAuthor(@RequestBody Author author) {
+    public void PostAuthor( Author author) {
         System.out.println(author.toString());
         authorRepository.save(author);
     }
+
+    public void DeleteAuthor(Integer ID){
+        authorRepository.deleteById(ID);
+    }
+    public Iterable<Author> GetAllAuthors(){
+        return authorRepository.findAll();
+    }
+
+
 }

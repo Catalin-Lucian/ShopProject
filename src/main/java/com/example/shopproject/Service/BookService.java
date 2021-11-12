@@ -4,8 +4,6 @@ import com.example.shopproject.Model.Entity.Book;
 import com.example.shopproject.Repository.BookRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Optional;
 
@@ -21,8 +19,17 @@ public class BookService {
         return bookRepository.findById(ISBN);
     }
 
-    public void PostBook(@RequestBody Book book){
+    public void PostBook(Book book){
         System.out.println(book.toString());
         bookRepository.save(book);
     }
+
+    public void DeleteBook(String ISBN){
+        bookRepository.deleteById(ISBN);
+    }
+
+    public Iterable<Book> GetAllBooks(){
+        return bookRepository.findAll();
+    }
+
 }

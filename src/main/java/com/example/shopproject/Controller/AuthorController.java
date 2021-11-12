@@ -1,7 +1,6 @@
 package com.example.shopproject.Controller;
 
 import com.example.shopproject.Model.Entity.Author;
-import com.example.shopproject.Repository.AuthorRepository;
 import com.example.shopproject.Service.AuthorService;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,10 +22,21 @@ public class AuthorController {
         return authorService.GetAuthorByID(ID);
     }
 
+    @GetMapping("/all")
+    public Iterable<Author> GetAllAuthors(){
+        return authorService.GetAllAuthors();
+    }
+
+
     @PostMapping
     public void PostAuthor(@RequestBody Author author){
         System.out.println(author.toString());
         authorService.PostAuthor(author);
+    }
+
+    @DeleteMapping
+    public void DeleteAuthor(Integer ID){
+        authorService.DeleteAuthor(ID);
     }
 
 }
