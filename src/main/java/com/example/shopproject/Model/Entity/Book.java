@@ -1,10 +1,14 @@
 package com.example.shopproject.Model.Entity;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
+@Data
 @Entity
-public class Book {
+public class Book implements Serializable {
 
     @Id
     private String ISBN;
@@ -13,46 +17,6 @@ public class Book {
     private Integer AN;
     private String GEN;
 
-
-    public String getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
-
-    public String getTITLU() {
-        return TITLU;
-    }
-
-    public void setTITLU(String TITLU) {
-        this.TITLU = TITLU;
-    }
-
-    public String getEDITURA() {
-        return EDITURA;
-    }
-
-    public void setEDITURA(String EDITURA) {
-        this.EDITURA = EDITURA;
-    }
-
-    public Integer getAN() {
-        return AN;
-    }
-
-    public void setAN(Integer AN_PUBLICARE) {
-        this.AN = AN_PUBLICARE;
-    }
-
-    public String getGEN() {
-        return GEN;
-    }
-
-    public void setGEN(String GEN_LITERAR) {
-        this.GEN = GEN_LITERAR;
-    }
 
     @Override
     public String toString() {
