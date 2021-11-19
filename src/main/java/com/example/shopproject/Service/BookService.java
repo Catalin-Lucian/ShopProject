@@ -1,35 +1,99 @@
 package com.example.shopproject.Service;
 
-import com.example.shopproject.Model.Entity.Book;
+import com.example.shopproject.Mapper.BookMapper;
+import com.example.shopproject.Model.DTO.Book.BookDTO;
+import com.example.shopproject.Model.DTO.Book.PartialBookDTO;
+import com.example.shopproject.Model.DTO.Book.PostBookDTO;
 import com.example.shopproject.Repository.BookRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class BookService {
+
     private final BookRepository bookRepository;
 
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    public Optional<Book> GetBookByISBN( String ISBN){
-        return bookRepository.findById(ISBN);
+
+    public BookDTO GetBookByIsbn(String isbn) {
+        var book = bookRepository.findById(isbn);
+        return book.map(BookMapper::BookToBookDTO).orElse(null);
     }
 
-    public void PostBook(Book book){
-        System.out.println(book.toString());
+    public PartialBookDTO GetPartialBookByIsbn(String isbn) {
+        var book = bookRepository.findById(isbn);
+        return book.map(BookMapper::BookToPartialBookDTO).orElse(null);
+    }
+
+    public void PostBook(PostBookDTO postBookDTO) {
+        var book = BookMapper.PostBookDTOToBook(postBookDTO);
+        book.setIsbn(UUID.randomUUID().toString());
         bookRepository.save(book);
     }
 
-    public void DeleteBook(String ISBN){
-        bookRepository.deleteById(ISBN);
+    public void DeleteBook(String isbn) {
+        bookRepository.deleteById(isbn);
     }
 
-    public Iterable<Book> GetAllBooks(){
-        return bookRepository.findAll();
+    public List<BookDTO> GetAllBooks() {
+        List<BookDTO> bookDTOS = new ArrayList<>();
+        bookRepository.findAll().forEach(book -> {
+            bookDTOS.add(BookMapper.BookToBookDTO(book));
+        });
+        return bookDTOS;
+    }
+
+    public List<BookDTO> GetBooksPerPage(Integer page, Integer itemsPerPage) {
+        List<BookDTO> bookList = GetAllBooks();
+
+        if (page < 1)
+            page = 1;
+        if (itemsPerPage < 1)
+            itemsPerPage = 10;
+        if (page > (bookList.size() / itemsPerPage))
+            if ((bookList.size() % itemsPerPage == 0))
+                page = bookList.size() / itemsPerPage;
+            else
+                page = bookList.size() / itemsPerPage + 1;
+
+        int firstElement = (page - 1) * itemsPerPage;
+        int lastElement = page * itemsPerPage - 1;
+
+
+        if (lastElement >= bookList.size())
+            lastElement = bookList.size() - 1;
+
+        return bookList.subList(firstElement, lastElement + 1);
+    }
+
+    public List<BookDTO> GetBooksByGenre(String genre) {
+        List<BookDTO> bookDTOS = new ArrayList<>();
+        bookRepository.findAllByGenre(genre).forEach(book -> {
+            bookDTOS.add(BookMapper.BookToBookDTO(book));
+        });
+        return bookDTOS;
+    }
+
+    public List<BookDTO> GetBooksByYear(Integer year) {
+        List<BookDTO> bookDTOS = new ArrayList<>();
+        bookRepository.findAllByYear(year).forEach(book -> {
+            bookDTOS.add(BookMapper.BookToBookDTO(book));
+        });
+        return bookDTOS;
+    }
+
+    public List<BookDTO> GetBooksByGenreAndYear(String genre, Integer year) {
+        List<BookDTO> bookDTOS = new ArrayList<>();
+        bookRepository.findAllByGenreAndYear(genre, year).forEach(book -> {
+            bookDTOS.add(BookMapper.BookToBookDTO(book));
+        });
+        return bookDTOS;
     }
 
 }
