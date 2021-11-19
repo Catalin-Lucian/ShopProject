@@ -1,0 +1,53 @@
+package com.example.shopproject.Mapper;
+
+import com.example.shopproject.Model.DTO.Book.BookDTO;
+import com.example.shopproject.Model.DTO.Book.PartialBookDTO;
+import com.example.shopproject.Model.DTO.Book.PostBookDTO;
+import com.example.shopproject.Model.Entity.Book;
+
+public class BookMapper {
+    public static BookDTO BookToBookDTO(Book book) {
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setYear(book.getYear());
+        bookDTO.setPublisher(book.getPublisher());
+        bookDTO.setGenre(book.getGenre());
+        bookDTO.setIsbn(book.getIsbn());
+        bookDTO.setTitle(book.getTitle());
+        return bookDTO;
+    }
+
+    public static Book BookDTOToBook(BookDTO bookDTO) {
+        Book book = new Book();
+        book.setYear(bookDTO.getYear());
+        book.setPublisher(bookDTO.getPublisher());
+        book.setGenre(bookDTO.getGenre());
+        book.setIsbn(bookDTO.getIsbn());
+        book.setTitle(bookDTO.getTitle());
+        return book;
+    }
+
+    public static PartialBookDTO BookToPartialBookDTO(Book book) {
+        PartialBookDTO partialBookDTO = new PartialBookDTO();
+        partialBookDTO.setIsbn(book.getIsbn());
+        partialBookDTO.setTitle(book.getTitle());
+        return partialBookDTO;
+    }
+
+    public static PostBookDTO BookToPostBookDTO(Book book) {
+        PostBookDTO postBookDTO = new PostBookDTO();
+        postBookDTO.setYear(book.getYear());
+        postBookDTO.setPublisher(book.getPublisher());
+        postBookDTO.setGenre(book.getGenre());
+        postBookDTO.setTitle(book.getTitle());
+        return postBookDTO;
+    }
+
+    public static Book PostBookDTOToBook(PostBookDTO postBookDTO) {
+        Book book = new Book();
+        book.setYear(postBookDTO.getYear());
+        book.setPublisher(postBookDTO.getPublisher());
+        book.setGenre(postBookDTO.getGenre());
+        book.setTitle(postBookDTO.getTitle());
+        return book;
+    }
+}
