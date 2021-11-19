@@ -1,36 +1,12 @@
-package com.example.shopproject.Model.Entity;
+package com.example.shopproject.Model.DTO.Book;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.io.Serializable;
+import com.example.shopproject.Model.DTO.DTO;
 
-@Entity
-public class Book implements Serializable {
-
-    @Id
-    @Column(name = "isbn")
-    private String isbn;
-
-    @Column(name = "title")
+public class PostBookDTO implements DTO {
     private String title;
-
-    @Column(name = "publisher")
     private String publisher;
-
-    @Column(name = "year")
     private Integer year;
-
-    @Column(name = "genre")
     private String genre;
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
 
     public String getTitle() {
         return title;
@@ -66,9 +42,8 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "isbn='" + isbn + '\'' +
-                ", title='" + title + '\'' +
+        return "PostBookDTO{" +
+                "title='" + title + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", year=" + year +
                 ", genre='" + genre + '\'' +

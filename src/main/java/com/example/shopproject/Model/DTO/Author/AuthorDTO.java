@@ -1,22 +1,9 @@
-package com.example.shopproject.Model.Entity;
+package com.example.shopproject.Model.DTO.Author;
 
 
-import javax.persistence.*;
-import java.io.Serializable;
-
-@Entity
-public class Author implements Serializable {
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+public class AuthorDTO {
     private Integer id;
-
-    @Column(name = "first_name")
     private String firstName;
-
-    @Column(name = "last_name")
     private String lastName;
 
     public Integer getId() {
@@ -45,7 +32,7 @@ public class Author implements Serializable {
 
     @Override
     public String toString() {
-        return "Author{" +
+        return "AuthorDTO{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
