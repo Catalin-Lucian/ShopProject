@@ -23,16 +23,16 @@ public class BookService {
 
     public BookDTO GetBookByIsbn(String isbn) {
         var book = bookRepository.findById(isbn);
-        return book.map(BookMapper::BookToBookDTO).orElse(null);
+        return book.map(BookMapper::convertToBookDTO).orElse(null);
     }
 
     public PartialBookDTO GetPartialBookByIsbn(String isbn) {
         var book = bookRepository.findById(isbn);
-        return book.map(BookMapper::BookToPartialBookDTO).orElse(null);
+        return book.map(BookMapper::convertToPartialBookDTO).orElse(null);
     }
 
     public void PostBook(PostBookDTO postBookDTO) {
-        var book = BookMapper.PostBookDTOToBook(postBookDTO);
+        var book = BookMapper.convertToBook(postBookDTO);
         book.setIsbn(UUID.randomUUID().toString());
         bookRepository.save(book);
     }
@@ -44,7 +44,7 @@ public class BookService {
     public List<BookDTO> GetAllBooks() {
         List<BookDTO> bookDTOS = new ArrayList<>();
         bookRepository.findAll().forEach(book -> {
-            bookDTOS.add(BookMapper.BookToBookDTO(book));
+            bookDTOS.add(BookMapper.convertToBookDTO(book));
         });
         return bookDTOS;
     }
@@ -75,7 +75,7 @@ public class BookService {
     public List<BookDTO> GetBooksByGenre(String genre) {
         List<BookDTO> bookDTOS = new ArrayList<>();
         bookRepository.findAllByGenre(genre).forEach(book -> {
-            bookDTOS.add(BookMapper.BookToBookDTO(book));
+            bookDTOS.add(BookMapper.convertToBookDTO(book));
         });
         return bookDTOS;
     }
@@ -83,7 +83,7 @@ public class BookService {
     public List<BookDTO> GetBooksByYear(Integer year) {
         List<BookDTO> bookDTOS = new ArrayList<>();
         bookRepository.findAllByYear(year).forEach(book -> {
-            bookDTOS.add(BookMapper.BookToBookDTO(book));
+            bookDTOS.add(BookMapper.convertToBookDTO(book));
         });
         return bookDTOS;
     }
@@ -91,7 +91,7 @@ public class BookService {
     public List<BookDTO> GetBooksByGenreAndYear(String genre, Integer year) {
         List<BookDTO> bookDTOS = new ArrayList<>();
         bookRepository.findAllByGenreAndYear(genre, year).forEach(book -> {
-            bookDTOS.add(BookMapper.BookToBookDTO(book));
+            bookDTOS.add(BookMapper.convertToBookDTO(book));
         });
         return bookDTOS;
     }

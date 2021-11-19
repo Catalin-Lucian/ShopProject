@@ -5,7 +5,8 @@ import com.example.shopproject.Model.DTO.Author.PostAuthorDTO;
 import com.example.shopproject.Model.Entity.Author;
 
 public class AuthorMapper {
-    public static AuthorDTO AuthorToAuthorDTO(Author author) {
+    
+    public static AuthorDTO convertToAuthorDTO(Author author) {
         var authorDTO = new AuthorDTO();
         authorDTO.setId(author.getId());
         authorDTO.setLastName(author.getLastName());
@@ -13,14 +14,14 @@ public class AuthorMapper {
         return authorDTO;
     }
 
-    public static PostAuthorDTO AuthorToPostAuthorDTO(Author author) {
+    public static PostAuthorDTO convertToPostAuthorDTO(Author author) {
         var authorDTO = new PostAuthorDTO();
         authorDTO.setFirstName(author.getFirstName());
         authorDTO.setLastName(author.getLastName());
         return authorDTO;
     }
 
-    public static Author AuthorDTOToAuthor(AuthorDTO authorDTO) {
+    public static Author convertTOToAuthor(AuthorDTO authorDTO) {
         var author = new Author();
         author.setId(authorDTO.getId());
         author.setFirstName(authorDTO.getFirstName());
@@ -28,7 +29,7 @@ public class AuthorMapper {
         return author;
     }
 
-    public static Author PostAuthorDTOtoAuthor(PostAuthorDTO postAuthorDTO) {
+    public static Author convertToAuthor(PostAuthorDTO postAuthorDTO) {
         var author = new Author();
         author.setFirstName(postAuthorDTO.getFirstName());
         author.setLastName(postAuthorDTO.getLastName());
