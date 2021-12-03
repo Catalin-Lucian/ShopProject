@@ -1,13 +1,11 @@
 package com.example.shopproject.Model.Entity.Book;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-
-
-
 
 @Entity
 @Table(name = "book")
@@ -28,6 +26,12 @@ public class Book implements Serializable {
 
     @Column(name = "genre")
     private String genre;
+
+    @Column(name = "stock")
+    private Integer stock;
+
+    @Column(name = "price")
+    private Float price;
 
     public String getIsbn() {
         return isbn;
@@ -69,6 +73,22 @@ public class Book implements Serializable {
         this.genre = genre;
     }
 
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -77,6 +97,8 @@ public class Book implements Serializable {
                 ", publisher='" + publisher + '\'' +
                 ", year=" + year +
                 ", genre='" + genre + '\'' +
+                ", stock=" + stock +
+                ", price=" + price +
                 '}';
     }
 }
