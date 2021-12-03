@@ -1,11 +1,10 @@
 package com.example.shopproject.Controller;
 
 
-import com.example.shopproject.Model.Entity.Order;
+import com.example.shopproject.Model.DTO.Order.PostOrderDTO;
+import com.example.shopproject.Model.Entity.Order.Order;
 import com.example.shopproject.Service.OrderService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/orders")
@@ -18,7 +17,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public void PostOrder(Order order){
+    public void PostOrder(@RequestBody PostOrderDTO order, @RequestParam Integer idUser){
         orderService.PostOrder(order);
     }
 

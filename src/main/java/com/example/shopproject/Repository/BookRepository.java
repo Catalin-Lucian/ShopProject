@@ -1,7 +1,7 @@
 package com.example.shopproject.Repository;
 
 
-import com.example.shopproject.Model.Entity.Book;
+import com.example.shopproject.Model.Entity.Book.Book;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

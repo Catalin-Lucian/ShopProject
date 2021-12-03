@@ -2,7 +2,7 @@ package com.example.shopproject.Mapper;
 
 import com.example.shopproject.Model.DTO.Author.AuthorDTO;
 import com.example.shopproject.Model.DTO.Author.PostAuthorDTO;
-import com.example.shopproject.Model.Entity.Author;
+import com.example.shopproject.Model.Entity.Author.Author;
 
 public class AuthorMapper {
     
