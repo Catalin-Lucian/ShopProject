@@ -18,7 +18,7 @@ public class OrderController {
 
     @PostMapping
     public void PostOrder(@RequestBody PostOrderDTO order, @RequestParam Integer idUser){
-        orderService.PostOrder(order);
+        orderService.PostOrder(order,idUser);
     }
 
 }

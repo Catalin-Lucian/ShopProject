@@ -4,10 +4,11 @@ import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import javax.persistence.Entity;
 import java.util.*;
 
 
-@Document(collation = "Client.ID")
+@Document(collation = "client")
 public class Order {
 
     @MongoId
