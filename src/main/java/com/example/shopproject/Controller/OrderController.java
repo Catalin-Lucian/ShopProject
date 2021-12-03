@@ -2,7 +2,6 @@ package com.example.shopproject.Controller;
 
 
 import com.example.shopproject.Model.DTO.Order.PostOrderDTO;
-import com.example.shopproject.Model.Entity.Order.Order;
 import com.example.shopproject.Service.OrderService;
 import org.springframework.web.bind.annotation.*;
 

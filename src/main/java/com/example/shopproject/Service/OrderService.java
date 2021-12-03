@@ -20,4 +20,8 @@ public class OrderService {
         Order order= OrderMapper.convertToOrder(postOrderDTO);
         mongoOps.insert(order,"Client."+idUser);
     }
+
+    public void DeleteAllOrders(Integer idUser){
+        mongoOps.dropCollection("Client."+idUser);
+    }
 }
