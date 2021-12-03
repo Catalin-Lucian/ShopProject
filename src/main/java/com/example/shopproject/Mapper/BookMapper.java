@@ -13,6 +13,8 @@ public class BookMapper {
         bookDTO.setGenre(book.getGenre());
         bookDTO.setIsbn(book.getIsbn());
         bookDTO.setTitle(book.getTitle());
+        bookDTO.setPrice(book.getPrice());
+        bookDTO.setStock(book.getStock());
         return bookDTO;
     }
 
@@ -23,6 +25,8 @@ public class BookMapper {
         book.setGenre(bookDTO.getGenre());
         book.setIsbn(bookDTO.getIsbn());
         book.setTitle(bookDTO.getTitle());
+        book.setPrice(bookDTO.getPrice());
+        book.setStock(bookDTO.getStock());
         return book;
     }
 
@@ -48,6 +52,9 @@ public class BookMapper {
         book.setPublisher(postBookDTO.getPublisher());
         book.setGenre(postBookDTO.getGenre());
         book.setTitle(postBookDTO.getTitle());
+        book.setPrice(postBookDTO.getPrice());
+        book.setStock(postBookDTO.getStock());
+
         return book;
     }
 }
