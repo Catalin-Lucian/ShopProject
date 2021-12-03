@@ -1,10 +1,11 @@
-package com.example.shopproject.Model.Entity;
+package com.example.shopproject.Model.Entity.Author;
 
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "author")
 public class Author implements Serializable {
 
 

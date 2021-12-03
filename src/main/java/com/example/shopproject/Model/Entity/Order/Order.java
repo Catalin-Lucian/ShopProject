@@ -1,26 +1,25 @@
-package com.example.shopproject.Model.Entity;
+package com.example.shopproject.Model.Entity.Order;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import javax.persistence.Id;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 
 @Document(collation = "Client.ID")
 public class Order {
 
     @MongoId
-    public ObjectId id;
-    public Date date = new Date();
-    public Map<String,String> items = new HashMap<>();
+    private ObjectId id;
+    private Date date = new Date();
+    private List<Items> items= new ArrayList<Items>();
 
     public Order() {
     }
 
-    public Order(Date date, Map<String, String> items) {
+    public Order(ObjectId id, Date date, List<Items> items) {
+        this.id = id;
         this.date = date;
         this.items = items;
     }
@@ -41,11 +40,11 @@ public class Order {
         this.date = date;
     }
 
-    public Map<String, String> getItems() {
+    public List<Items> getItems() {
         return items;
     }
 
-    public void setItems(Map<String, String> items) {
+    public void setItems(List<Items> items) {
         this.items = items;
     }
 

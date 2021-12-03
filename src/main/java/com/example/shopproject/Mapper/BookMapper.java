@@ -3,7 +3,7 @@ package com.example.shopproject.Mapper;
 import com.example.shopproject.Model.DTO.Book.BookDTO;
 import com.example.shopproject.Model.DTO.Book.PartialBookDTO;
 import com.example.shopproject.Model.DTO.Book.PostBookDTO;
-import com.example.shopproject.Model.Entity.Book;
+import com.example.shopproject.Model.Entity.Book.Book;
 
 public class BookMapper {
     public static BookDTO convertToBookDTO(Book book) {
