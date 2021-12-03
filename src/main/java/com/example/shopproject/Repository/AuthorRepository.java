@@ -1,6 +1,6 @@
 package com.example.shopproject.Repository;
 
-import com.example.shopproject.Model.Entity.Author;
+import com.example.shopproject.Model.Entity.Author.Author;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

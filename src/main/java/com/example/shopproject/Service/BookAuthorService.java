@@ -34,7 +34,7 @@ public class BookAuthorService {
 
         for (BookAuthor bookAuthor : bookAuthorsList) {
             var author = authorRepository.findById(bookAuthor.getIdAuthor());
-            author.ifPresent(value -> authorDTOList.add(AuthorMapper.AuthorToAuthorDTO(value)));
+            author.ifPresent(value -> authorDTOList.add(AuthorMapper.convertToAuthorDTO(value)));
         }
         return authorDTOList;
     }
@@ -45,7 +45,7 @@ public class BookAuthorService {
 
         for (BookAuthor bookAuthor : bookAuthorsList) {
             var book = bookRepository.findById(bookAuthor.getIsbn());
-            book.ifPresent(value -> bookDTOList.add(BookMapper.BookToBookDTO(value)));
+            book.ifPresent(value -> bookDTOList.add(BookMapper.convertToBookDTO(value)));
         }
         return bookDTOList;
     }
