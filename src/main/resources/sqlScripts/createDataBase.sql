@@ -8,7 +8,7 @@ CREATE TABLE `book`
    `year` int, -- VA FI INDEXAT
    `genre` varchar(200), -- -- VA FI INDEXAT
    `stock` int,
-   `price` int)
+   `price` float)
 ;
 
 CREATE INDEX `idx_year` 
