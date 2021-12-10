@@ -6,4 +6,6 @@ import lombok.Data;
 public class Item {
     String isbn;
     String title;
+    Float price;
+    Integer quantity;
 }

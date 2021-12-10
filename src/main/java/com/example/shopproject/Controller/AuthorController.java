@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Objects;
 
-@RestController
+@RestController()
 @RequestMapping(value = "/api/bookcollection/authors")
 public class AuthorController {
 

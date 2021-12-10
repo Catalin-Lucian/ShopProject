@@ -13,6 +13,5 @@ public class Order {
     private ObjectId id;
     private Date date = new Date();
     private List<Item> items= new ArrayList<Item>();
-
-
+    private Status status;
 }
